@@ -21,7 +21,8 @@
         android:layout_height="wrap_content"
         style="@style/Button"
         android:text="Limpar Lista"
-        android:onClick="limparLista"/>
+        android:onClick="limparLista"
+        />
 
     <TextView
         android:layout_width="match_parent"
