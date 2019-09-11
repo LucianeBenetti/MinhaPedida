@@ -59,8 +59,8 @@ public class MainControl {
         adapterItem.remove(i);
     }
 
-    private void atualizarItem (Item i) {
-        item.setQtdade(i.getQtdade() + 1);
+    private void somarItem (Item i) {
+        item.setQuantidade(i.getQuantidade() + 1);
         adapterItem.notifyDataSetChanged();
         item = null;
     }
@@ -86,7 +86,7 @@ public class MainControl {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 item = adapterItem.getItem(i);
 
-                dialogEditarItem(item);
+                dialogAdicionarUmItem(item);
             }
         });
     }
@@ -105,7 +105,8 @@ public class MainControl {
     private void dialogExcluirItem(final Item i) {
 
         AlertDialog.Builder alerta = new AlertDialog.Builder(activity);
-        alerta.setTitle("Exclir Item.");
+        alerta.setTitle("Excluir Item");
+        alerta.setIcon(android.R.drawable.ic_menu_delete);
         alerta.setMessage(i.toString());
         alerta.setNegativeButton("Fechar", new DialogInterface.OnClickListener() {
             @Override
@@ -124,22 +125,33 @@ public class MainControl {
         alerta.show();
     }
 
-    private void dialogEditarItem (final Item i){
+    private void dialogAdicionarUmItem (final Item i){
 
         AlertDialog.Builder alerta = new AlertDialog.Builder(activity);
-        alerta.setTitle("Adicionar item.");
+        alerta.setTitle("Adicionar item");
         alerta.setMessage(i.toString());
-        alerta.setNegativeButton("Fechar", new DialogInterface.OnClickListener() {
+        alerta.setNegativeButton("-1", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                item.removeQuantidade();//chamando metodo da classe
+                adapterItem.notifyDataSetChanged();
+                if(item.getQuantidade()==0){
+                    adapterItem.remove(item);
+                }
                 item = null;
             }
         });
         alerta.setPositiveButton("+1", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int pos) {
-                atualizarItem(i);
+                somarItem(i);//chamando método co control
                 atualizarTotal();
+            }
+        });
+        alerta.setNeutralButton("Fechar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                item = null;
             }
         });
         alerta.show();
@@ -165,8 +177,7 @@ public class MainControl {
     }
 
     public void limparListaAction(){
-
         adapterItem.clear();
 
-        }
+    }
 }

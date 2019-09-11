@@ -40,7 +40,7 @@ public class Item implements Serializable {
 
     public void addQuantidade(){
         this.quantidade++;
-    }
+    }//não utilizado, no control está de outra forma
 
     public void removeQuantidade(){
         this.quantidade--;
@@ -52,7 +52,7 @@ public class Item implements Serializable {
 
     @Override
     public String toString() {
-        return produto.getNome() + " - R$" + produto.getValor()
-                + " - " + quantidade + " = " + getSubtotal();
+        return produto.getNome() + " - R$ " + produto.getValor()
+                + " - " + quantidade + " = R$ " + getSubtotal();
     }
 }

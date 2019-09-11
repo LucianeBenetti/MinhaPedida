@@ -23,6 +23,5 @@ public class ProdutoActivity extends AppCompatActivity {
     public void enviar(View v){
         control.enviarAction();
 
-
     }
 }

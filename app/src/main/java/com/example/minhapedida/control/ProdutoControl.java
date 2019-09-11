@@ -23,6 +23,8 @@ public class ProdutoControl {
     private ArrayAdapter<Produto> adapterItem;
     private NumberPicker npQtdade;
 
+    //caso tenha um listView tbwm, deve ter outro arrayadpter para o listView
+
     public ProdutoControl(Activity activity) {
         this.activity = activity;
         initComponents();
@@ -53,7 +55,7 @@ public class ProdutoControl {
     private void configurarNumberPicker() {
         npQtdade.setMinValue(0);
         npQtdade.setMaxValue(20);
-        npQtdade.setValue(10);
+       // npQtdade.setValue(10);//caso nao use o setValue por default mantém o valor mínimo
     }
 
     private Item getDadosFormItemProduto() {
