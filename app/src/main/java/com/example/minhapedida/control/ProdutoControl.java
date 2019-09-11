@@ -78,4 +78,9 @@ public class ProdutoControl {
 
     }
 
+    public void cancelarAction(){
+        activity.setResult(activity.RESULT_CANCELED);
+        activity.finish();
+    }
+
 }

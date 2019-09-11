@@ -24,4 +24,9 @@ public class ProdutoActivity extends AppCompatActivity {
         control.enviarAction();
 
     }
+
+    public void cancelar(View v){
+        control.cancelarAction();
+
+    }
 }

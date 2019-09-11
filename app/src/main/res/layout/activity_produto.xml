@@ -39,4 +39,10 @@
         android:id="@+id/btEnviar"
         android:onClick="enviar"/>
 
+    <Button
+        android:text="Cancelar"
+        style="@style/Button"
+        android:id="@+id/btCancelar"
+        android:onClick="cancelar"/>
+
 </LinearLayout>
