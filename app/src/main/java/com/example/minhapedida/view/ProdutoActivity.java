@@ -29,4 +29,9 @@ public class ProdutoActivity extends AppCompatActivity {
         control.cancelarAction();
 
     }
+
+    public void gerenciarProduto(View v){
+        control.gerenciarProdutoAction();
+
+    }
 }

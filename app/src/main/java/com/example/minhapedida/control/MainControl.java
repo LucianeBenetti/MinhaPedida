@@ -13,9 +13,11 @@ import android.widget.Toast;
 
 import com.example.minhapedida.Uteis.Constantes;
 import com.example.minhapedida.R;
+import com.example.minhapedida.dao.db.ItemDao;
 import com.example.minhapedida.model.Item;
 import com.example.minhapedida.view.ProdutoActivity;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,10 +29,12 @@ public class MainControl {
     private List<Item> listItem;
     private ArrayAdapter<Item> adapterItem;
     private Item item;
+    private ItemDao itemDao;
 
     public MainControl(Activity activity) {
         this.activity = activity;
         item = new Item();
+        itemDao = new ItemDao(activity);
         initComponents();
     }
 
@@ -42,7 +46,12 @@ public class MainControl {
     }
 
     private void configListView() {
-        listItem = new ArrayList<>();
+
+        try {
+            listItem = itemDao.getDao().queryForAll();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         adapterItem = new ArrayAdapter<>(activity, android.R.layout.simple_list_item_1, listItem);
         //para spinner tem um R.layout.spinner.
         lvItens.setAdapter(adapterItem);
@@ -117,10 +126,16 @@ public class MainControl {
         alerta.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
-                excluirItemLv(i);
+                try {
+                    if(itemDao.getDao().delete(item)>0) {
+                        excluirItemLv(i);
+                        atualizarTotal();
+                    }
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
                 item = null;
-                atualizarTotal();
-            }
+                }
         });
         alerta.show();
     }

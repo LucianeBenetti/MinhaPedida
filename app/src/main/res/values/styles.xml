@@ -59,4 +59,9 @@
         <item name="android:layout_gravity">center</item>
     </style>
 
+    <style name="EditText" parent="base">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
 </resources>

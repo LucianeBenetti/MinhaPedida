@@ -8,10 +8,13 @@ import android.widget.Spinner;
 
 import com.example.minhapedida.R;
 import com.example.minhapedida.Uteis.Constantes;
+import com.example.minhapedida.dao.db.ItemDao;
+import com.example.minhapedida.dao.db.ProdutoDao;
 import com.example.minhapedida.model.Item;
 import com.example.minhapedida.model.Produto;
 import com.example.minhapedida.view.MainActivity;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,13 +23,16 @@ public class ProdutoControl {
     private Activity activity;
     private Spinner spProduto;
     private List<Produto> listProduto;
-    private ArrayAdapter<Produto> adapterItem;
+    private ArrayAdapter<Produto> adapterProduto;
     private NumberPicker npQtdade;
 
+    private ProdutoDao produtoDao;
     //caso tenha um listView tbwm, deve ter outro arrayadpter para o listView
 
     public ProdutoControl(Activity activity) {
         this.activity = activity;
+        produtoDao = new ProdutoDao(activity);
+
         initComponents();
     }
 
@@ -39,17 +45,23 @@ public class ProdutoControl {
     }
 
     private void configSpinner() {
-        listProduto = new ArrayList<>();
-        listProduto.add(new Produto("Refrigerante", 3.00));
-        listProduto.add(new Produto("Cerveja", 5.00));
-        listProduto.add(new Produto("Batata Frita", 10.00));
-        listProduto.add(new Produto("Água", 2.50));
-        listProduto.add(new Produto("Pastel", 3.50));
-        listProduto.add(new Produto("Petiscos", 6.00));
 
-        adapterItem = new  ArrayAdapter<>(activity, android.R.layout.simple_spinner_dropdown_item, listProduto);
-       // adapterItem.addAll(listProduto);
-        spProduto.setAdapter(adapterItem);
+        try {
+            produtoDao.getDao().createIfNotExists(new Produto(1, "Refrigerante", 3.00));
+            produtoDao.getDao().createIfNotExists(new Produto(2, "Cerveja", 5.00));
+            produtoDao.getDao().createIfNotExists(new Produto(3, "Batata Frita", 10.00));
+            produtoDao.getDao().createIfNotExists(new Produto(4, "Água", 2.50));
+            produtoDao.getDao().createIfNotExists(new Produto(5,"Pastel", 3.50));
+            produtoDao.getDao().createIfNotExists(new Produto(6, "Petiscos", 6.00));
+
+            listProduto = produtoDao.getDao().queryForAll();
+            adapterProduto = new  ArrayAdapter<>(activity, android.R.layout.simple_spinner_dropdown_item, listProduto);
+            // adapterItem.addAll(listProduto);
+            spProduto.setAdapter(adapterProduto);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private void configurarNumberPicker() {
@@ -83,4 +95,6 @@ public class ProdutoControl {
         activity.finish();
     }
 
+    public void gerenciarProdutoAction() {
+    }
 }

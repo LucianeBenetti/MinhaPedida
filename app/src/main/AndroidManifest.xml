@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.ComandaActivity"></activity>
+        <activity android:name=".view.GerenciarCategoriaActivity"></activity>
+        <activity android:name=".view.GerenciarProdutoActivity" />
         <activity android:name=".view.ProdutoActivity" />
         <activity android:name=".view.MainActivity">
             <intent-filter>

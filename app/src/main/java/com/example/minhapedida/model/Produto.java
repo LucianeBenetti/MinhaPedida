@@ -1,12 +1,37 @@
 package com.example.minhapedida.model;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
 import java.io.Serializable;
 
+@DatabaseTable(tableName = "produto")
 public class Produto implements Serializable {
+
+    @DatabaseField(allowGeneratedIdInsert = true, generatedId = true)
+    private Integer id;
+
+    @DatabaseField(canBeNull = false, columnName = "nome", width = 60)
     private String nome;
+
+    @DatabaseField(canBeNull = false, columnName = "valor")
     private Double valor;
 
     public Produto() {
+    }
+
+    public Produto(Integer id, String nome, Double valor) {
+        this.id = id;
+        this.nome = nome;
+        this.valor = valor;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Produto(String nome, Double valor) {

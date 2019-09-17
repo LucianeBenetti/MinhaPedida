@@ -19,7 +19,7 @@
     
     <Spinner
         android:id="@+id/spProduto"
-     style="@style/Spinner">
+        style="@style/Spinner">
     </Spinner>
 
     <TextView
@@ -44,5 +44,11 @@
         style="@style/Button"
         android:id="@+id/btCancelar"
         android:onClick="cancelar"/>
+
+    <Button
+        android:text="Gerenciar Produto"
+        style="@style/Button"
+        android:id="@+id/btGerProduto"
+        android:onClick="gerenciarProduto"/>
 
 </LinearLayout>
