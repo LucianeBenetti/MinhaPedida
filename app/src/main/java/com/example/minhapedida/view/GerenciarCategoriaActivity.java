@@ -18,8 +18,8 @@ public class GerenciarCategoriaActivity extends AppCompatActivity {
         control = new GerenciarCategoria(this);
     }
 
-    public void salvarcategoria(View v){
-        control.salvarcategoriaAction();
+    public void salvarCategoria(View v){
+        control.salvarCategoriaAction();
     }
 
 }

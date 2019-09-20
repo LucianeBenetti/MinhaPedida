@@ -17,6 +17,9 @@ public class Produto implements Serializable {
     @DatabaseField(canBeNull = false, columnName = "valor")
     private Double valor;
 
+    @DatabaseField(foreign = true, foreignAutoRefresh = true)
+    private Categoria categoria;
+
     public Produto() {
     }
 

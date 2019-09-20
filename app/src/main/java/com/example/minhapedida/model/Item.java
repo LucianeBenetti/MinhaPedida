@@ -1,7 +1,6 @@
 package com.example.minhapedida.model;
 
 import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
 import java.io.Serializable;
@@ -20,6 +19,9 @@ public class Item implements Serializable {
 
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private Produto produto;
+
+    @DatabaseField(foreign = true, foreignAutoRefresh = true)
+    Comanda comanda;
 
     public Item(Integer id, Produto produto, int quantidade) {
         this.id = id;

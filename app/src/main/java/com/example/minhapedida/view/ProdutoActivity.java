@@ -1,13 +1,10 @@
 package com.example.minhapedida.view;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
-
 import com.example.minhapedida.R;
 import com.example.minhapedida.control.ProdutoControl;
-import com.example.minhapedida.model.Produto;
 
 public class ProdutoActivity extends AppCompatActivity {
     private ProdutoControl control;
@@ -33,5 +30,11 @@ public class ProdutoActivity extends AppCompatActivity {
     public void gerenciarProduto(View v){
         control.gerenciarProdutoAction();
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        control.configSpinner();
     }
 }

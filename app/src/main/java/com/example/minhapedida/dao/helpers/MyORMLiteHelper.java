@@ -2,6 +2,9 @@ package com.example.minhapedida.dao.helpers;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+
+import com.example.minhapedida.model.Categoria;
+import com.example.minhapedida.model.Comanda;
 import com.example.minhapedida.model.Item;
 import com.example.minhapedida.model.Produto;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
@@ -10,7 +13,7 @@ import com.j256.ormlite.table.TableUtils;
 import java.sql.SQLException;
 
 public class MyORMLiteHelper extends OrmLiteSqliteOpenHelper {
-    private static final String DATABASE_NAME = "minha_pedida.db";
+    private static final String DATABASE_NAME = "minhapedida.db";
     private static final int DATABASE_VERSION = 1;
 
     public MyORMLiteHelper (Context c){
@@ -22,7 +25,8 @@ public class MyORMLiteHelper extends OrmLiteSqliteOpenHelper {
         try{
             TableUtils.createTable(connectionSource, Produto.class);
             TableUtils.createTable(connectionSource, Item.class);
-
+            TableUtils.createTable(connectionSource, Categoria.class);
+            TableUtils.createTable(connectionSource, Comanda.class);
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -34,6 +38,8 @@ public class MyORMLiteHelper extends OrmLiteSqliteOpenHelper {
         try{
             TableUtils.dropTable(connectionSource, Produto.class, true);
             TableUtils.dropTable(connectionSource, Item.class, true);
+            TableUtils.dropTable(connectionSource, Categoria.class, true);
+            TableUtils.dropTable(connectionSource, Comanda.class, true);
             onCreate(sqLiteDatabase, connectionSource);
         }catch (SQLException e){
             e.printStackTrace();

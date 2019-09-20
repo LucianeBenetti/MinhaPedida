@@ -9,17 +9,32 @@
     style="@style/container"
     tools:context=".view.GerenciarProdutoActivity">
 
-    <Button
-        style="@style/Button"
-        android:text="Gerenciar Categoria"
-        android:onClick="telaAddItemCategoria"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
 
-    <Spinner
-        android:layout_marginTop="10dp"
-        android:id="@+id/spCategoria"
-        style="@style/Spinner">
-    </Spinner>
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:layout_marginRight="3dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/spCategoria"
+            style="@style/Spinner">
+        </Spinner>
 
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0.4"
+            style="@style/Button"
+            android:text="Adicionar"
+            android:onClick="telaAddItemCategoria"/>
+
+
+    </LinearLayout>
 
     <EditText
         android:hint="Nome do Produto"
@@ -30,6 +45,13 @@
         style="@style/EditText"
         android:hint="Valor"
         android:id="@+id/editValor"/>
+
+
+    <Button
+        style="@style/Button"
+        android:text="Salvar"
+        android:id="@+id/btSalvarProduto"
+        android:onClick="salvarProduto"/>
 
     <ListView
         android:id="@+id/lvProdutos"

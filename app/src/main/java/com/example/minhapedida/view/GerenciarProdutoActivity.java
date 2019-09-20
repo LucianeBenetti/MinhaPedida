@@ -21,5 +21,13 @@ private GerenciarProduto control;
         control.telaAddItemCategoriaAction();
     }
 
+    public void salvarProduto(View v){
+        control.salvarProdutoAction();
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        control.configSpinner();
+    }
 }

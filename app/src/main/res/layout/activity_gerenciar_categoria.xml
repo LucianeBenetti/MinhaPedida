@@ -19,7 +19,7 @@
         style="@style/Button"
         android:text="Salvar"
         android:id="@+id/btSalvarCategoria"
-        android:onClick="salvarcategoria"/>
+        android:onClick="salvarCategoria"/>
 
     <ListView
         android:id="@+id/lvCategorias"

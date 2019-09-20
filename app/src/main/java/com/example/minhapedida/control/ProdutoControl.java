@@ -12,7 +12,9 @@ import com.example.minhapedida.dao.db.ItemDao;
 import com.example.minhapedida.dao.db.ProdutoDao;
 import com.example.minhapedida.model.Item;
 import com.example.minhapedida.model.Produto;
+import com.example.minhapedida.view.GerenciarProdutoActivity;
 import com.example.minhapedida.view.MainActivity;
+import com.example.minhapedida.view.ProdutoActivity;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -44,7 +46,7 @@ public class ProdutoControl {
         configurarNumberPicker();
     }
 
-    private void configSpinner() {
+    public void configSpinner() {
 
         try {
             produtoDao.getDao().createIfNotExists(new Produto(1, "Refrigerante", 3.00));
@@ -96,5 +98,8 @@ public class ProdutoControl {
     }
 
     public void gerenciarProdutoAction() {
+        Intent it = new Intent(activity, GerenciarProdutoActivity.class);
+        activity.startActivity(it);
+
     }
 }

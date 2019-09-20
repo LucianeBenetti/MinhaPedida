@@ -32,8 +32,8 @@ public class GerenciarCategoria {
     private void initComponents() {
 
         nomeCategoria = activity.findViewById(R.id.editNomeCategoria);
+        lvCategorias = activity.findViewById(R.id.lvCategorias);
     }
-
 
     private void configListView() {
 
@@ -42,7 +42,7 @@ public class GerenciarCategoria {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        adapterCategoria = new ArrayAdapter<>(activity, android.R.layout.simple_list_item_1, listCategoria);
+        adapterCategoria = new ArrayAdapter<>(activity, android.R.layout.simple_spinner_dropdown_item, listCategoria);
         //para spinner tem um R.layout.spinner.
         lvCategorias.setAdapter(adapterCategoria);
         cliqueCurto();
@@ -50,12 +50,13 @@ public class GerenciarCategoria {
     }
 
     private void cliqueLongo() {
+
     }
 
     private void cliqueCurto() {
     }
 
-    public void salvarcategoriaAction() {
+    public void salvarCategoriaAction() {
 
         if(categoria==null){
             categoria = getDadosForm();

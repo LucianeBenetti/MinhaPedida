@@ -147,11 +147,27 @@ public class MainControl {
         alerta.setMessage(i.toString());
         alerta.setNegativeButton("-1", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
+            public void onClick(DialogInterface dialogInterface, int pos) {
                 item.removeQuantidade();//chamando metodo da classe
                 adapterItem.notifyDataSetChanged();
                 if(item.getQuantidade()==0){
-                    adapterItem.remove(item);
+                    try {
+                        if(itemDao.getDao().delete(item)>0) {
+                            adapterItem.remove(item);
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }else{
+                    try {
+                    if(itemDao.getDao().update(item)>0) {
+                        somarItem(item);//chamando método co control
+                        atualizarTotal();
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
                 }
                 item = null;
             }
@@ -159,8 +175,14 @@ public class MainControl {
         alerta.setPositiveButton("+1", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int pos) {
-                somarItem(i);//chamando método co control
-                atualizarTotal();
+                try {
+                    if(itemDao.getDao().update(item)>0) {
+                        somarItem(i);//chamando método co control
+                        atualizarTotal();
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         });
         alerta.setNeutralButton("Fechar", new DialogInterface.OnClickListener() {
@@ -182,8 +204,15 @@ public class MainControl {
         if (resultCode == activity.RESULT_OK) {
             if (requestCode == Constantes.Request.ITEM) {
                 item = (Item) data.getSerializableExtra(Constantes.Parametros.ITEM);
-                addItemLv(item);
-                atualizarTotal();
+                try {
+                    if(itemDao.getDao().create(item)>0) {
+                        addItemLv(item);
+                        atualizarTotal();
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
                 item = null;
             } else if (resultCode == activity.RESULT_CANCELED) {
                 Toast.makeText(activity, R.string.acao_cancelada, Toast.LENGTH_SHORT).show();

@@ -1,9 +1,11 @@
 package com.example.minhapedida.model;
 
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 @DatabaseTable(tableName = "categoria")
 public class Categoria implements Serializable {
@@ -14,7 +16,15 @@ public class Categoria implements Serializable {
     @DatabaseField(canBeNull = false, columnName = "categoria", width = 40)
     private String nome;
 
+    @ForeignCollectionField(eager = true)
+    private Collection<Produto> categoriaProduto;
+
     public Categoria() {
+
+    }
+
+    public Categoria(String nome) {
+        this.nome = nome;
     }
 
     public Categoria(Integer id, String nome) {
@@ -36,5 +46,18 @@ public class Categoria implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Collection<Produto> getCategoriaProduto() {
+        return categoriaProduto;
+    }
+
+    public void setCategoriaProduto(Collection<Produto> categoriaProduto) {
+        this.categoriaProduto = categoriaProduto;
+    }
+
+    @Override
+    public String toString() {
+        return id + " - " + nome + getCategoriaProduto().size();
     }
 }
