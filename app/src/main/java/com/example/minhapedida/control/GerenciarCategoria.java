@@ -1,6 +1,10 @@
 package com.example.minhapedida.control;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -42,7 +46,7 @@ public class GerenciarCategoria {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        adapterCategoria = new ArrayAdapter<>(activity, android.R.layout.simple_spinner_dropdown_item, listCategoria);
+        adapterCategoria = new ArrayAdapter<>(activity, android.R.layout.simple_list_item_1, listCategoria);
         //para spinner tem um R.layout.spinner.
         lvCategorias.setAdapter(adapterCategoria);
         cliqueCurto();
@@ -50,11 +54,76 @@ public class GerenciarCategoria {
     }
 
     private void cliqueLongo() {
+        lvCategorias.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                categoria = adapterCategoria.getItem(i);
+                dialogExcluirCategoria(categoria);
+                return true; //executa somente clique longo
+            }
+        });
 
     }
+
+    private void dialogExcluirCategoria(Categoria c) {
+        AlertDialog.Builder alerta = new AlertDialog.Builder(activity);
+        alerta.setTitle("Excluir Item");
+        alerta.setIcon(android.R.drawable.ic_menu_delete);
+        alerta.setMessage(c.toString());
+        alerta.setNegativeButton("Fechar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int which) {
+                categoria = null;
+            }
+        });
+        alerta.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int which) {
+                try {
+                    if(categoriaDao.getDao().delete(categoria)>0) {
+                        excluirCategoriaLv(categoria);
+
+                    }
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+                categoria = null;
+            }
+        });
+        alerta.show();
+    }
+
 
     private void cliqueCurto() {
+        lvCategorias.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                categoria = adapterCategoria.getItem(i);
+
+                dialogAdicionarCategoria(categoria);
+            }
+        });
     }
+
+    private void dialogAdicionarCategoria(Categoria c) {
+        AlertDialog.Builder alerta = new AlertDialog.Builder(activity);
+        alerta.setTitle("Mostrando dados");
+        alerta.setMessage(categoria.toString());
+        alerta.setNegativeButton("Fechar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                categoria = null;
+            }
+        });
+        alerta.setPositiveButton("Editar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                carregarForm(categoria);
+            }
+        });
+        alerta.show();
+    }
+
 
     public void salvarCategoriaAction() {
 

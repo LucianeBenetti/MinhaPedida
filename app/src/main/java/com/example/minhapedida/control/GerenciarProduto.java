@@ -25,6 +25,7 @@ import com.example.minhapedida.view.ProdutoActivity;
 import com.j256.ormlite.dao.Dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GerenciarProduto {
@@ -33,7 +34,7 @@ public class GerenciarProduto {
     private Spinner spCategoria;
     private EditText nomeProduto;
     private EditText valorProduto;
-    private ListView lvProdutos;
+    private ListView lvGerenciarProdutos;
     private List<Produto> listProdutos;
     private ArrayAdapter<Produto> adapterProduto;
     private List<Categoria> listCategoria;
@@ -49,12 +50,12 @@ public class GerenciarProduto {
         produtoDao = new ProdutoDao(activity);
         categoriaDao = new CategoriaDao(activity);
         produto = new Produto();
-    //    configListView();
+        configListView();
         initComponents();
     }
 
     private void initComponents() {
-        lvProdutos = activity.findViewById(R.id.lvProdutos);
+        lvGerenciarProdutos = activity.findViewById(R.id.lvGerenciarProdutos);
         spCategoria = activity.findViewById(R.id.spCategoria);
         nomeProduto = activity.findViewById(R.id.editNomeProduto);
         valorProduto = activity.findViewById(R.id.editValor);
@@ -81,13 +82,13 @@ public class GerenciarProduto {
             e.printStackTrace();
         }
         adapterProduto = new ArrayAdapter<>(activity, android.R.layout.simple_list_item_1, listProdutos);
-        lvProdutos.setAdapter(adapterProduto);
+        lvGerenciarProdutos.setAdapter(adapterProduto);
         cliqueCurto();
         cliqueLongo();
     }
 
     private void cliqueLongo() {
-        lvProdutos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        lvGerenciarProdutos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 produto = adapterProduto.getItem(i);
@@ -104,7 +105,7 @@ public class GerenciarProduto {
     }
 
     private void cliqueCurto() {
-        lvProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        lvGerenciarProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 produto = adapterProduto.getItem(i);

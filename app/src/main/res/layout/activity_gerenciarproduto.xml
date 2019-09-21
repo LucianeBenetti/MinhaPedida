@@ -54,7 +54,7 @@
         android:onClick="salvarProduto"/>
 
     <ListView
-        android:id="@+id/lvProdutos"
+        android:id="@+id/lvGerenciarProdutos"
         style="@style/ListView">
     </ListView>
 
