@@ -6,15 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.minhapedida.R;
-import com.example.minhapedida.control.GerenciarProduto;
+import com.example.minhapedida.control.GerenciarProdutoControl;
 
 public class GerenciarProdutoActivity extends AppCompatActivity {
-private GerenciarProduto control;
+private GerenciarProdutoControl control;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gerenciarproduto);
-        control = new GerenciarProduto(this);
+        control = new GerenciarProdutoControl(this);
     }
 
     public void telaAddItemCategoria(View v){

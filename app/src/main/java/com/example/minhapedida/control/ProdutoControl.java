@@ -8,16 +8,12 @@ import android.widget.Spinner;
 
 import com.example.minhapedida.R;
 import com.example.minhapedida.Uteis.Constantes;
-import com.example.minhapedida.dao.db.ItemDao;
 import com.example.minhapedida.dao.db.ProdutoDao;
 import com.example.minhapedida.model.Item;
 import com.example.minhapedida.model.Produto;
 import com.example.minhapedida.view.GerenciarProdutoActivity;
-import com.example.minhapedida.view.MainActivity;
-import com.example.minhapedida.view.ProdutoActivity;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProdutoControl {
@@ -49,13 +45,13 @@ public class ProdutoControl {
     public void configSpinner() {
 
         try {
-            produtoDao.getDao().createIfNotExists(new Produto(1, "Refrigerante", 3.00));
+            /*produtoDao.getDao().createIfNotExists(new Produto(1, "Refrigerante", 3.00));
             produtoDao.getDao().createIfNotExists(new Produto(2, "Cerveja", 5.00));
             produtoDao.getDao().createIfNotExists(new Produto(3, "Batata Frita", 10.00));
             produtoDao.getDao().createIfNotExists(new Produto(4, "Água", 2.50));
             produtoDao.getDao().createIfNotExists(new Produto(5,"Pastel", 3.50));
             produtoDao.getDao().createIfNotExists(new Produto(6, "Petiscos", 6.00));
-
+*/
             listProduto = produtoDao.getDao().queryForAll();
             adapterProduto = new  ArrayAdapter<>(activity, android.R.layout.simple_spinner_dropdown_item, listProduto);
             // adapterItem.addAll(listProduto);

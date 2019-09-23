@@ -58,6 +58,14 @@ public class Produto implements Serializable {
         this.valor = valor;
     }
 
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
     public void setValor(String valor) {
         try {
             this.valor = Double.parseDouble(valor);
@@ -68,6 +76,6 @@ public class Produto implements Serializable {
 
     @Override
     public String toString() {
-        return nome;
+        return nome + " - " + valor;
     }
 }

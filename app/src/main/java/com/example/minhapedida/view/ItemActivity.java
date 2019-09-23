@@ -7,17 +7,17 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.minhapedida.R;
-import com.example.minhapedida.control.MainControl;
+import com.example.minhapedida.control.ItemControl;
 
-public class MainActivity extends AppCompatActivity {
+public class ItemActivity extends AppCompatActivity {
 
-    private MainControl control;
+    private ItemControl control;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        control = new MainControl(this);
+        setContentView(R.layout.activity_item);
+        control = new ItemControl(this);
     }
 
     public void adicionarProduto (View v){

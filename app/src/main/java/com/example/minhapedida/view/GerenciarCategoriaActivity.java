@@ -6,16 +6,16 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.minhapedida.R;
-import com.example.minhapedida.control.GerenciarCategoria;
+import com.example.minhapedida.control.GerenciarCategoriaControl;
 
 public class GerenciarCategoriaActivity extends AppCompatActivity {
 
-    private GerenciarCategoria control;
+    private GerenciarCategoriaControl control;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gerenciar_categoria);
-        control = new GerenciarCategoria(this);
+        control = new GerenciarCategoriaControl(this);
     }
 
     public void salvarCategoria(View v){

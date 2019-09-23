@@ -21,7 +21,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainControl {
+public class ItemControl {
 
     private Activity activity;
     private TextView tvTotal;
@@ -31,7 +31,7 @@ public class MainControl {
     private Item item;
     private ItemDao itemDao;
 
-    public MainControl(Activity activity) {
+    public ItemControl(Activity activity) {
         this.activity = activity;
         item = new Item();
         itemDao = new ItemDao(activity);

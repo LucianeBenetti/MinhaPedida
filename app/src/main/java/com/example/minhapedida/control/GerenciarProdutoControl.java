@@ -28,7 +28,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GerenciarProduto {
+public class GerenciarProdutoControl {
 
     private Activity activity;
     private Spinner spCategoria;
@@ -43,14 +43,13 @@ public class GerenciarProduto {
 
     private ProdutoDao produtoDao;
     private CategoriaDao categoriaDao;
-    //caso tenha um listView tbwm, deve ter outro arrayadpter para o listView
 
-    public GerenciarProduto(Activity activity) {
+    public GerenciarProdutoControl(Activity activity) {
         this.activity = activity;
         produtoDao = new ProdutoDao(activity);
         categoriaDao = new CategoriaDao(activity);
         produto = new Produto();
-        configListView();
+
         initComponents();
     }
 
@@ -60,6 +59,7 @@ public class GerenciarProduto {
         nomeProduto = activity.findViewById(R.id.editNomeProduto);
         valorProduto = activity.findViewById(R.id.editValor);
         configSpinner();
+        configListView();
     }
 
     public void configSpinner() {
@@ -79,7 +79,7 @@ public class GerenciarProduto {
         try {
             listProdutos = produtoDao.getDao().queryForAll();
         } catch (SQLException e) {
-            e.printStackTrace();
+            listProdutos = new ArrayList<>();
         }
         adapterProduto = new ArrayAdapter<>(activity, android.R.layout.simple_list_item_1, listProdutos);
         lvGerenciarProdutos.setAdapter(adapterProduto);
@@ -101,7 +101,6 @@ public class GerenciarProduto {
 
     private void addProdutoLv(Produto p) {
         adapterProduto.add(p);
-
     }
 
     private void cliqueCurto() {
@@ -172,6 +171,7 @@ public class GerenciarProduto {
     private void excluirProdutoLv(Produto p) {
         adapterProduto.remove(p);
     }
+
     public void telaAddItemCategoriaAction() {
         Intent it = new Intent(activity, GerenciarCategoriaActivity.class);
         activity.startActivityForResult(it, Constantes.Request.ITEM);
@@ -182,6 +182,7 @@ public class GerenciarProduto {
         Produto p = new Produto();
         p.setNome(nomeProduto.getText().toString());
         p.setValor(valorProduto.getText().toString());
+        p.setCategoria((Categoria) spCategoria.getSelectedItem());
         return p;
     }
 
@@ -207,8 +208,7 @@ public class GerenciarProduto {
             e1.printStackTrace();
         }
         produto = null;
-
-
+        configSpinner();
     }
 
     private void atualizarProduto(Produto p) {

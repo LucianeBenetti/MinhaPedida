@@ -15,7 +15,7 @@ import com.j256.ormlite.dao.Dao;
 import java.sql.SQLException;
 import java.util.List;
 
-public class GerenciarCategoria {
+public class GerenciarCategoriaControl {
 
     private Activity activity;
     private EditText nomeCategoria;
@@ -25,11 +25,10 @@ public class GerenciarCategoria {
     private ArrayAdapter<Categoria> adapterCategoria;
     private Categoria categoria;
 
-    public GerenciarCategoria(Activity activity) {
+    public GerenciarCategoriaControl(Activity activity) {
         categoriaDao = new CategoriaDao(activity);
         categoria = new Categoria();
         this.activity = activity;
-        configListView();
         initComponents();
 }
 
@@ -37,6 +36,7 @@ public class GerenciarCategoria {
 
         nomeCategoria = activity.findViewById(R.id.editNomeCategoria);
         lvCategorias = activity.findViewById(R.id.lvCategorias);
+        configListView();
     }
 
     private void configListView() {
