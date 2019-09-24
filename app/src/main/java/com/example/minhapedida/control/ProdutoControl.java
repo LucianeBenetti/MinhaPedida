@@ -45,16 +45,9 @@ public class ProdutoControl {
     public void configSpinner() {
 
         try {
-            /*produtoDao.getDao().createIfNotExists(new Produto(1, "Refrigerante", 3.00));
-            produtoDao.getDao().createIfNotExists(new Produto(2, "Cerveja", 5.00));
-            produtoDao.getDao().createIfNotExists(new Produto(3, "Batata Frita", 10.00));
-            produtoDao.getDao().createIfNotExists(new Produto(4, "Água", 2.50));
-            produtoDao.getDao().createIfNotExists(new Produto(5,"Pastel", 3.50));
-            produtoDao.getDao().createIfNotExists(new Produto(6, "Petiscos", 6.00));
-*/
+
             listProduto = produtoDao.getDao().queryForAll();
             adapterProduto = new  ArrayAdapter<>(activity, android.R.layout.simple_spinner_dropdown_item, listProduto);
-            // adapterItem.addAll(listProduto);
             spProduto.setAdapter(adapterProduto);
 
         } catch (SQLException e) {

@@ -1,9 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    style="@style/container"
     tools:context=".view.ComandaActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        style="@style/EditText"
+        android:hint="Digite o número da mesa"
+        android:id="@+id/editMesa">
+    </EditText>
+
+    <EditText
+        style="@style/EditText"
+        android:hint="Digite o local"
+        android:id="@+id/editLocal">
+    </EditText>
+
+    <Button
+        style="@style/Button"
+        android:text="Nova Comanda"
+        android:id="@+id/btNovaComanda"
+        android:onClick="novaComanda"/>
+
+    <ListView
+        android:id="@+id/lvComandas"
+        style="@style/ListView">
+    </ListView>
+
+</LinearLayout>

@@ -13,10 +13,10 @@ public class Comanda implements Serializable {
     @DatabaseField(allowGeneratedIdInsert = true, generatedId = true)
     private Integer id;
 
-    @DatabaseField(canBeNull = false, columnName = "quantidade", defaultValue = "1")
-    private String Local;
+    @DatabaseField(canBeNull = false, columnName = "local")
+    private String local;
 
-    @DatabaseField(canBeNull = false, columnName = "quantidade", defaultValue = "1")
+    @DatabaseField(canBeNull = false, columnName = "mesa")
     private Integer mesa;
 
     @ForeignCollectionField(eager = true)
@@ -27,7 +27,7 @@ public class Comanda implements Serializable {
 
     public Comanda(Integer id, String local, Integer mesa, Collection<Item> listaItem) {
         this.id = id;
-        Local = local;
+        local = local;
         this.mesa = mesa;
         this.listaItem = listaItem;
     }
@@ -41,11 +41,11 @@ public class Comanda implements Serializable {
     }
 
     public String getLocal() {
-        return Local;
+        return local;
     }
 
     public void setLocal(String local) {
-        Local = local;
+        local = local;
     }
 
     public Integer getMesa() {
@@ -68,11 +68,11 @@ public class Comanda implements Serializable {
 
     @Override
     public String toString() {
-        return "Comanda{" +
-                "id=" + id +
-                ", Local='" + Local + '\'' +
-                ", mesa=" + mesa +
-                ", listaItem=" + listaItem +
-                '}';
+        if(getListaItem()!= null)
+        return  id + " - Mesa: " + mesa + "\n\n" +
+                "Local: " + local + " Itens: " + getListaItem().size();
+        else
+            return  id + " - Mesa: " + mesa + "\n\n" +
+                    "Local: " + local + " Itens: (0)";
     }
 }
