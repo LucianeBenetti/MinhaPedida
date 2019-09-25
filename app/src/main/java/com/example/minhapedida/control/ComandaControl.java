@@ -71,6 +71,7 @@ public class ComandaControl {
     }
 
     private void chamarActivityItem(Comanda comanda) {
+
         Intent it = new Intent(activity, ItemActivity.class);
         it.putExtra(Constantes.Parametros.ITEM, comanda);
         activity.startActivity(it);
@@ -139,6 +140,7 @@ public class ComandaControl {
 
             if (res.isCreated()) {
                 addComandaLv(comanda);
+                chamarActivityItem(comanda);
             } else if (res.isUpdated()) {
 
                 atualizarComanda(comanda);
@@ -162,7 +164,7 @@ public class ComandaControl {
     private Comanda getDadosForm() {
         Comanda c = new Comanda();
         c.setMesa(editMesa.getText().toString());
-        c.setListaItem(comanda.getListaItem());
+        c.setLocal("Bar da Esquina");
         return c;
 
     }

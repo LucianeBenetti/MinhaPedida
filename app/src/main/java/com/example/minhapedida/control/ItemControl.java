@@ -32,11 +32,13 @@ public class ItemControl {
     private ArrayAdapter<Item> adapterItem;
     private Item item;
     private ItemDao itemDao;
+    private Comanda comanda;
 
     public ItemControl(Activity activity) {
         this.activity = activity;
         item = new Item();
         itemDao = new ItemDao(activity);
+        comanda = (Comanda) activity.getIntent().getSerializableExtra(Constantes.Parametros.ITEM);
         initComponents();
         showResultado();
     }
@@ -50,12 +52,11 @@ public class ItemControl {
     }
 
     private void configListView() {
-
-        try {
-            listItem = itemDao.getDao().queryForAll();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        if(comanda.getListaItem()!=null) {
+            listItem = new ArrayList<>(comanda.getListaItem());
+        }else{
+            listItem = new ArrayList<>();
+}
         adapterItem = new ArrayAdapter<>(activity, android.R.layout.simple_list_item_1, listItem);
         //para spinner tem um R.layout.spinner.
         lvItens.setAdapter(adapterItem);
@@ -64,7 +65,6 @@ public class ItemControl {
     }
 
     private void showResultado() {
-        Comanda comanda = (Comanda) activity.getIntent().getSerializableExtra(Constantes.Parametros.ITEM);
         tvResultado.setText(comanda.toString());
     }
 
@@ -117,6 +117,7 @@ public class ItemControl {
 
         }
         tvTotal.setText("Total: " + total);
+        adicionarQtdeItens();
     }
 
 
@@ -214,6 +215,7 @@ public class ItemControl {
             if (requestCode == Constantes.Request.ITEM) {
                 item = (Item) data.getSerializableExtra(Constantes.Parametros.ITEM);
                 try {
+                    item.setComanda(comanda);
                     if (itemDao.getDao().create(item) > 0) {
                         addItemLv(item);
                         atualizarTotal();
@@ -233,4 +235,9 @@ public class ItemControl {
         adapterItem.clear();
 
     }
+
+    public void adicionarQtdeItens() {
+        comanda.getQuantidadeItens();
+    }
 }
+

@@ -41,7 +41,7 @@ public class Comanda implements Serializable {
     }
 
     public String getLocal() {
-        return local = "Bar da Esquina";
+        return local;
     }
 
     public void setLocal(String local) {
@@ -68,6 +68,14 @@ public class Comanda implements Serializable {
         return listaItem;
     }
 
+    public int getQuantidadeItens() {
+        if(listaItem!=null){
+            return listaItem.size();
+        } else {
+            return 0;
+        }
+    }
+
     public void setListaItem(Collection<Item> listaItem) {
         this.listaItem = listaItem;
     }
@@ -75,11 +83,9 @@ public class Comanda implements Serializable {
 
     @Override
     public String toString() {
-        if (getListaItem() != null)
             return id + " - Mesa: " + mesa + "\n\n" +
-                    "Local: " + local + " Itens: " + getListaItem().size();
-        else
-            return id + " - Mesa: " + mesa + "\n\n" +
-                    "Local: " + local + " Itens: (0)";
+                    "Local: " + local + "\n\n" +
+                    "Itens: " + getQuantidadeItens();
+
     }
 }
