@@ -32,8 +32,24 @@ public class Item implements Serializable {
     public Item() {
     }
 
+    public Item(Integer id, int quantidade, double valor, Produto produto, Comanda comanda) {
+        this.id = id;
+        this.quantidade = quantidade;
+        this.valor = valor;
+        this.produto = produto;
+        this.comanda = comanda;
+    }
+
     public double getValor() {
         return valor;
+    }
+
+    public Comanda getComanda() {
+        return comanda;
+    }
+
+    public void setComanda(Comanda comanda) {
+        this.comanda = comanda;
     }
 
     public void setValor(double valor) {
@@ -100,9 +116,3 @@ public class Item implements Serializable {
                 + " - " + quantidade + " = R$ " + getSubtotal();
     }
 }
-
-//comanda
-//id
-//local
-//mesa
-//List<Item>
