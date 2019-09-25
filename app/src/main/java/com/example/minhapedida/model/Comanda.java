@@ -41,15 +41,23 @@ public class Comanda implements Serializable {
     }
 
     public String getLocal() {
-        return local;
+        return local = "Bar da Esquina";
     }
 
     public void setLocal(String local) {
-        local = local;
+        this.local = local;
     }
 
     public Integer getMesa() {
         return mesa;
+    }
+
+    public void setMesa(String mesa) {
+        try {
+            this.mesa = Integer.parseInt(mesa);
+        } catch (Exception e) {
+            this.mesa = null;
+        }
     }
 
     public void setMesa(Integer mesa) {
@@ -65,14 +73,13 @@ public class Comanda implements Serializable {
     }
 
 
-
     @Override
     public String toString() {
-        if(getListaItem()!= null)
-        return  id + " - Mesa: " + mesa + "\n\n" +
-                "Local: " + local + " Itens: " + getListaItem().size();
+        if (getListaItem() != null)
+            return id + " - Mesa: " + mesa + "\n\n" +
+                    "Local: " + local + " Itens: " + getListaItem().size();
         else
-            return  id + " - Mesa: " + mesa + "\n\n" +
+            return id + " - Mesa: " + mesa + "\n\n" +
                     "Local: " + local + " Itens: (0)";
     }
 }

@@ -11,6 +11,7 @@ import com.example.minhapedida.control.ComandaControl;
 public class ComandaActivity extends AppCompatActivity {
 
     private ComandaControl control;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,7 +19,7 @@ public class ComandaActivity extends AppCompatActivity {
         control = new ComandaControl(this);
     }
 
-    public void novaComanda(View v){
+    public void novaComanda(View v) {
         control.novaComandaAction();
     }
 

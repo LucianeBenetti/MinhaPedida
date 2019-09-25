@@ -20,10 +20,11 @@ public class ItemActivity extends AppCompatActivity {
         control = new ItemControl(this);
     }
 
-    public void adicionarProduto (View v){
+    public void adicionarProduto(View v) {
         control.adicionarProdutoAction();
     }
-    public void limparLista (View v){
+
+    public void limparLista(View v) {
         control.limparListaAction();
     }
 

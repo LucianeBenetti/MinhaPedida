@@ -33,19 +33,18 @@
     <EditText
         style="@style/EditText"
         android:hint="Valor"
-        android:id="@+id/editValor"/>
+        android:id="@+id/editValor" />
 
 
     <Button
         style="@style/Button"
         android:text="Salvar"
         android:id="@+id/btSalvarProduto"
-        android:onClick="salvarProduto"/>
+        android:onClick="salvarProduto" />
 
     <ListView
         android:id="@+id/lvGerenciarProdutos"
-        style="@style/ListView">
-    </ListView>
+        style="@style/ListView"></ListView>
 
 
 </LinearLayout>

@@ -68,7 +68,7 @@ public class ItemControl {
         adapterItem.remove(i);
     }
 
-    private void somarItem (Item i) {
+    private void somarItem(Item i) {
         item.setQuantidade(i.getQuantidade() + 1);
         adapterItem.notifyDataSetChanged();
         item = null;
@@ -103,11 +103,11 @@ public class ItemControl {
 
     private void atualizarTotal() {
         Double total = 0.0;
-        for (Item item:listItem) {
+        for (Item item : listItem) {
             total += item.getSubtotal();
 
         }
-        tvTotal.setText("Total: " + total );
+        tvTotal.setText("Total: " + total);
     }
 
 
@@ -127,7 +127,7 @@ public class ItemControl {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
                 try {
-                    if(itemDao.getDao().delete(item)>0) {
+                    if (itemDao.getDao().delete(item) > 0) {
                         excluirItemLv(i);
                         atualizarTotal();
                     }
@@ -135,12 +135,12 @@ public class ItemControl {
                     e1.printStackTrace();
                 }
                 item = null;
-                }
+            }
         });
         alerta.show();
     }
 
-    private void dialogAdicionarUmItem (final Item i){
+    private void dialogAdicionarUmItem(final Item i) {
 
         AlertDialog.Builder alerta = new AlertDialog.Builder(activity);
         alerta.setTitle("Adicionar item");
@@ -150,23 +150,23 @@ public class ItemControl {
             public void onClick(DialogInterface dialogInterface, int pos) {
                 item.removeQuantidade();//chamando metodo da classe
                 adapterItem.notifyDataSetChanged();
-                if(item.getQuantidade()==0){
+                if (item.getQuantidade() == 0) {
                     try {
-                        if(itemDao.getDao().delete(item)>0) {
+                        if (itemDao.getDao().delete(item) > 0) {
                             adapterItem.remove(item);
                         }
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
-                }else{
+                } else {
                     try {
-                    if(itemDao.getDao().update(item)>0) {
-                        somarItem(item);//chamando método co control
-                        atualizarTotal();
+                        if (itemDao.getDao().update(item) > 0) {
+                            somarItem(item);//chamando método co control
+                            atualizarTotal();
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
                     }
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
 
                 }
                 item = null;
@@ -176,7 +176,7 @@ public class ItemControl {
             @Override
             public void onClick(DialogInterface dialogInterface, int pos) {
                 try {
-                    if(itemDao.getDao().update(item)>0) {
+                    if (itemDao.getDao().update(item) > 0) {
                         somarItem(i);//chamando método co control
                         atualizarTotal();
                     }
@@ -194,7 +194,7 @@ public class ItemControl {
         alerta.show();
     }
 
-    public void adicionarProdutoAction(){
+    public void adicionarProdutoAction() {
         Intent it = new Intent(activity, ProdutoActivity.class);
         activity.startActivityForResult(it, Constantes.Request.ITEM);
     }
@@ -205,7 +205,7 @@ public class ItemControl {
             if (requestCode == Constantes.Request.ITEM) {
                 item = (Item) data.getSerializableExtra(Constantes.Parametros.ITEM);
                 try {
-                    if(itemDao.getDao().create(item)>0) {
+                    if (itemDao.getDao().create(item) > 0) {
                         addItemLv(item);
                         atualizarTotal();
                     }
@@ -220,7 +220,7 @@ public class ItemControl {
         }
     }
 
-    public void limparListaAction(){
+    public void limparListaAction() {
         adapterItem.clear();
 
     }

@@ -18,9 +18,8 @@
         <activity android:name=".view.GerenciarCategoriaActivity" />
         <activity android:name=".view.GerenciarProdutoActivity" />
         <activity android:name=".view.ProdutoActivity" />
-        <activity android:name=".view.ItemActivity">
+        <activity android:name=".view.ItemActivity" />
 
-        </activity>
     </application>
 
 </manifest>

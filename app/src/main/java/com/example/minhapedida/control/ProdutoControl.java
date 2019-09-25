@@ -47,7 +47,7 @@ public class ProdutoControl {
         try {
 
             listProduto = produtoDao.getDao().queryForAll();
-            adapterProduto = new  ArrayAdapter<>(activity, android.R.layout.simple_spinner_dropdown_item, listProduto);
+            adapterProduto = new ArrayAdapter<>(activity, android.R.layout.simple_spinner_dropdown_item, listProduto);
             spProduto.setAdapter(adapterProduto);
 
         } catch (SQLException e) {
@@ -58,7 +58,7 @@ public class ProdutoControl {
     private void configurarNumberPicker() {
         npQtdade.setMinValue(0);
         npQtdade.setMaxValue(20);
-       // npQtdade.setValue(10);//caso nao use o setValue por default mantém o valor mínimo
+        // npQtdade.setValue(10);//caso nao use o setValue por default mantém o valor mínimo
     }
 
     private Item getDadosFormItemProduto() {
@@ -72,16 +72,16 @@ public class ProdutoControl {
 
     public void enviarAction() {
 
-        Item item  = getDadosFormItemProduto();
+        Item item = getDadosFormItemProduto();
 
-            Intent it = new Intent();
-            it.putExtra(Constantes.Parametros.ITEM, item);
-            activity.setResult(activity.RESULT_OK, it);
-            activity.finish();
+        Intent it = new Intent();
+        it.putExtra(Constantes.Parametros.ITEM, item);
+        activity.setResult(activity.RESULT_OK, it);
+        activity.finish();
 
     }
 
-    public void cancelarAction(){
+    public void cancelarAction() {
         activity.setResult(activity.RESULT_CANCELED);
         activity.finish();
     }

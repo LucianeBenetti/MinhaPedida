@@ -5,31 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
     style="@style/container"
     tools:context=".view.ComandaActivity">
 
     <EditText
         style="@style/EditText"
         android:hint="Digite o número da mesa"
-        android:id="@+id/editMesa">
-    </EditText>
-
-    <EditText
-        style="@style/EditText"
-        android:hint="Digite o local"
-        android:id="@+id/editLocal">
-    </EditText>
+        android:id="@+id/editMesa"></EditText>
 
     <Button
         style="@style/Button"
         android:text="Nova Comanda"
         android:id="@+id/btNovaComanda"
-        android:onClick="novaComanda"/>
+        android:onClick="novaComanda" />
 
     <ListView
         android:id="@+id/lvComandas"
-        style="@style/ListView">
-    </ListView>
+        style="@style/ListView"></ListView>
 
 </LinearLayout>

@@ -25,17 +25,18 @@
     </style>
 
     <style name="TextView" parent="base">
-        <item name="android:textColor">#1b5e20 </item>
+        <item name="android:textColor">#1b5e20</item>
         <item name="android:padding">15dp</item>
         <item name="android:textSize">20sp</item>
     </style>
 
 
     <style name="TextViewProduto" parent="base">
-        <item name="android:textColor">#1b5e20 </item>
+        <item name="android:textColor">#1b5e20</item>
         <item name="android:textSize">16sp</item>
 
     </style>
+
     <style name="ListView" parent="base">
         <item name="android:divider">#3e2723</item>
         <item name="android:dividerHeight">2dp</item>

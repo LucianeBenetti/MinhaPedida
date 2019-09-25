@@ -9,6 +9,6 @@ public class CategoriaDao extends DaoHelper<Categoria> {
 
     public CategoriaDao(Context c) {
         super(c, Categoria.class);
-        }
+    }
 
 }

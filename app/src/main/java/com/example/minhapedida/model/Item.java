@@ -73,23 +73,23 @@ public class Item implements Serializable {
     public void setQuantidade(String quantidade) {
         try {
             this.quantidade = Integer.parseInt(quantidade);
-        } catch (Exception e){
+        } catch (Exception e) {
             this.quantidade = 0;
         }
     }
 
-    public void addQuantidade(){
+    public void addQuantidade() {
         this.quantidade++;
     }//não utilizado, no control está de outra forma
 
-    public void removeQuantidade(){
+    public void removeQuantidade() {
         this.quantidade--;
     }
 
-    public Double getSubtotal(){
+    public Double getSubtotal() {
         try {
             return valor * quantidade;
-        }catch (Exception e){
+        } catch (Exception e) {
             return 0.0;
         }
     }

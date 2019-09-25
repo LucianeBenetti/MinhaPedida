@@ -7,7 +7,7 @@ import com.example.minhapedida.model.Comanda;
 
 public class ComandaDao extends DaoHelper<Comanda> {
 
-    public ComandaDao(Context c ) {
+    public ComandaDao(Context c) {
         super(c, Comanda.class);
     }
 }

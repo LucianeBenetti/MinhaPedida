@@ -19,11 +19,10 @@
         style="@style/Button"
         android:text="Salvar"
         android:id="@+id/btSalvarCategoria"
-        android:onClick="salvarCategoria"/>
+        android:onClick="salvarCategoria" />
 
     <ListView
         android:id="@+id/lvCategorias"
-        style="@style/ListView">
-    </ListView>s
+        style="@style/ListView"></ListView>s
 
 </LinearLayout>

@@ -11,6 +11,7 @@ import com.example.minhapedida.control.GerenciarCategoriaControl;
 public class GerenciarCategoriaActivity extends AppCompatActivity {
 
     private GerenciarCategoriaControl control;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,7 +19,7 @@ public class GerenciarCategoriaActivity extends AppCompatActivity {
         control = new GerenciarCategoriaControl(this);
     }
 
-    public void salvarCategoria(View v){
+    public void salvarCategoria(View v) {
         control.salvarCategoriaAction();
     }
 

@@ -66,7 +66,7 @@ public class GerenciarProdutoControl {
 
         try {
             listCategoria = categoriaDao.getDao().queryForAll();
-            adapterCategoria = new  ArrayAdapter<>(activity, android.R.layout.simple_spinner_dropdown_item, listCategoria);
+            adapterCategoria = new ArrayAdapter<>(activity, android.R.layout.simple_spinner_dropdown_item, listCategoria);
             spCategoria.setAdapter(adapterCategoria);
 
         } catch (SQLException e) {
@@ -154,7 +154,7 @@ public class GerenciarProdutoControl {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
                 try {
-                    if(produtoDao.getDao().delete(produto)>0) {
+                    if (produtoDao.getDao().delete(produto) > 0) {
                         excluirProdutoLv(produto);
 
                     }
@@ -187,9 +187,9 @@ public class GerenciarProdutoControl {
     }
 
     public void salvarProdutoAction() {
-        if(produto==null){
+        if (produto == null) {
             produto = getDadosForm();
-        }else {
+        } else {
             Produto p = getDadosForm();
             produto.setNome(p.getNome());
             produto.setValor(p.getValor());
@@ -198,9 +198,9 @@ public class GerenciarProdutoControl {
         try {
             res = produtoDao.getDao().createOrUpdate(produto);
 
-            if(res.isCreated()){
+            if (res.isCreated()) {
                 addProdutoLv(produto);
-            }else if(res.isUpdated()){
+            } else if (res.isUpdated()) {
 
                 atualizarProduto(produto);
             }

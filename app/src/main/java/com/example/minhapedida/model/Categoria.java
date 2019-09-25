@@ -58,9 +58,9 @@ public class Categoria implements Serializable {
 
     @Override
     public String toString() {
-       if(getCategoriaProduto()!=null)
-            return id + " - " + nome + " ("+getCategoriaProduto().size()+")";
-       else
+        if (getCategoriaProduto() != null)
+            return id + " - " + nome + " (" + getCategoriaProduto().size() + ")";
+        else
             return id + " - " + nome + " (0)";
     }
 }

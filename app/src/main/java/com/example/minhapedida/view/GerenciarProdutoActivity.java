@@ -9,7 +9,8 @@ import com.example.minhapedida.R;
 import com.example.minhapedida.control.GerenciarProdutoControl;
 
 public class GerenciarProdutoActivity extends AppCompatActivity {
-private GerenciarProdutoControl control;
+    private GerenciarProdutoControl control;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,11 +18,11 @@ private GerenciarProdutoControl control;
         control = new GerenciarProdutoControl(this);
     }
 
-    public void telaAddItemCategoria(View v){
+    public void telaAddItemCategoria(View v) {
         control.telaAddItemCategoriaAction();
     }
 
-    public void salvarProduto(View v){
+    public void salvarProduto(View v) {
         control.salvarProdutoAction();
     }
 

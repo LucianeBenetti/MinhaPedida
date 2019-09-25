@@ -69,7 +69,7 @@ public class Produto implements Serializable {
     public void setValor(String valor) {
         try {
             this.valor = Double.parseDouble(valor);
-        } catch (Exception e){
+        } catch (Exception e) {
             this.valor = null;
         }
     }

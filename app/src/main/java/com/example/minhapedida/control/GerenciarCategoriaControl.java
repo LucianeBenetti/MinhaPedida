@@ -8,10 +8,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+
 import com.example.minhapedida.R;
 import com.example.minhapedida.dao.db.CategoriaDao;
 import com.example.minhapedida.model.Categoria;
 import com.j256.ormlite.dao.Dao;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -30,7 +32,7 @@ public class GerenciarCategoriaControl {
         categoria = new Categoria();
         this.activity = activity;
         initComponents();
-}
+    }
 
     private void initComponents() {
 
@@ -80,7 +82,7 @@ public class GerenciarCategoriaControl {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
                 try {
-                    if(categoriaDao.getDao().delete(categoria)>0) {
+                    if (categoriaDao.getDao().delete(categoria) > 0) {
                         excluirCategoriaLv(categoria);
 
                     }
@@ -127,9 +129,9 @@ public class GerenciarCategoriaControl {
 
     public void salvarCategoriaAction() {
 
-        if(categoria==null){
+        if (categoria == null) {
             categoria = getDadosForm();
-        }else {
+        } else {
             Categoria c = getDadosForm();
             categoria.setNome(c.getNome());
 
@@ -138,9 +140,9 @@ public class GerenciarCategoriaControl {
         try {
             res = categoriaDao.getDao().createOrUpdate(categoria);
 
-            if(res.isCreated()){
+            if (res.isCreated()) {
                 addCategoriaLv(categoria);
-            }else if(res.isUpdated()){
+            } else if (res.isUpdated()) {
 
                 atualizarCategoria(categoria);
             }
@@ -160,8 +162,8 @@ public class GerenciarCategoriaControl {
         adapterCategoria.remove(c);
     }
 
-    private void atualizarCategoria(Categoria e) {
-        categoria.setNome(e.getNome());
+    private void atualizarCategoria(Categoria c) {
+        categoria.setNome(c.getNome());
         adapterCategoria.notifyDataSetChanged();
     }
 

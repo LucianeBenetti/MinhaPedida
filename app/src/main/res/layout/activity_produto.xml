@@ -10,45 +10,43 @@
 
     <TextView
         style="@style/TextView"
-        android:text="@string/adicionandoProduto"/>
+        android:text="@string/adicionandoProduto" />
 
     <TextView
         style="@style/TextView"
         android:text="@string/produto"
-        android:textSize="16sp"/>
-    
+        android:textSize="16sp" />
+
     <Spinner
         android:id="@+id/spProduto"
-        style="@style/Spinner">
-    </Spinner>
+        style="@style/Spinner"></Spinner>
 
     <TextView
         style="@style/TextViewProduto"
         android:text="@string/quantidade"
         android:gravity="center"
-        android:textSize="16sp"/>
-    
+        android:textSize="16sp" />
+
     <NumberPicker
         android:id="@+id/npQtdade"
-        style="@style/NumberPicker">
-    </NumberPicker>
+        style="@style/NumberPicker"></NumberPicker>
 
     <Button
         android:text="@string/enviar"
         style="@style/Button"
         android:id="@+id/btEnviar"
-        android:onClick="enviar"/>
+        android:onClick="enviar" />
 
     <Button
         android:text="Cancelar"
         style="@style/Button"
         android:id="@+id/btCancelar"
-        android:onClick="cancelar"/>
+        android:onClick="cancelar" />
 
     <Button
         android:text="Gerenciar Produto"
         style="@style/Button"
         android:id="@+id/btGerProduto"
-        android:onClick="gerenciarProduto"/>
+        android:onClick="gerenciarProduto" />
 
 </LinearLayout>
