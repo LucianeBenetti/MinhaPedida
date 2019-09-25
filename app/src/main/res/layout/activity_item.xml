@@ -11,6 +11,9 @@
     <TextView
         android:text="@string/minhaComanda"
         style="@style/TextView" />
+    <TextView
+        android:id="@+id/tvResultado"
+        style="@style/TextView"/>
 
     <Button
         style="@style/Button"

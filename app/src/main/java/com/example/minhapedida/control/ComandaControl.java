@@ -13,6 +13,7 @@ import android.widget.ListView;
 
 import com.example.minhapedida.R;
 
+import com.example.minhapedida.Uteis.Constantes;
 import com.example.minhapedida.dao.db.ComandaDao;
 import com.example.minhapedida.model.Comanda;
 import com.example.minhapedida.view.ItemActivity;
@@ -63,7 +64,6 @@ public class ComandaControl {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 comanda = adapterComanda.getItem(i);
-
                 chamarActivityItem(comanda);
 
             }
@@ -72,6 +72,7 @@ public class ComandaControl {
 
     private void chamarActivityItem(Comanda comanda) {
         Intent it = new Intent(activity, ItemActivity.class);
+        it.putExtra(Constantes.Parametros.ITEM, comanda);
         activity.startActivity(it);
     }
 
@@ -107,7 +108,7 @@ public class ComandaControl {
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 }
-                comandaDao = null;
+                comanda = null;
             }
         });
         alerta.show();
@@ -161,6 +162,7 @@ public class ComandaControl {
     private Comanda getDadosForm() {
         Comanda c = new Comanda();
         c.setMesa(editMesa.getText().toString());
+        c.setListaItem(comanda.getListaItem());
         return c;
 
     }

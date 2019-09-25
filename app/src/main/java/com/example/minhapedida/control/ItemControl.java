@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.minhapedida.Uteis.Constantes;
 import com.example.minhapedida.R;
 import com.example.minhapedida.dao.db.ItemDao;
+import com.example.minhapedida.model.Comanda;
 import com.example.minhapedida.model.Item;
 import com.example.minhapedida.view.ProdutoActivity;
 
@@ -25,6 +26,7 @@ public class ItemControl {
 
     private Activity activity;
     private TextView tvTotal;
+    private TextView tvResultado;
     private ListView lvItens;
     private List<Item> listItem;
     private ArrayAdapter<Item> adapterItem;
@@ -36,12 +38,14 @@ public class ItemControl {
         item = new Item();
         itemDao = new ItemDao(activity);
         initComponents();
+        showResultado();
     }
 
     private void initComponents() {
 
         tvTotal = activity.findViewById(R.id.tvTotal);
         lvItens = activity.findViewById(R.id.lvItens);
+        tvResultado = activity.findViewById(R.id.tvResultado);
         configListView();
     }
 
@@ -57,6 +61,11 @@ public class ItemControl {
         lvItens.setAdapter(adapterItem);
         cliqueCurto();
         cliqueLongo();
+    }
+
+    private void showResultado() {
+        Comanda comanda = (Comanda) activity.getIntent().getSerializableExtra(Constantes.Parametros.ITEM);
+        tvResultado.setText(comanda.toString());
     }
 
     private void addItemLv(Item i) {
